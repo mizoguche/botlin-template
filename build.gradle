@@ -2,6 +2,7 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '1.1.51'
+    ext.botlin_version = '0.2.1'
 
     repositories {
         mavenCentral()
@@ -15,10 +16,16 @@ apply plugin: 'kotlin'
 
 repositories {
     mavenCentral()
+    maven { url 'https://dl.bintray.com/mizoguche/maven/' }
+
+    // For simple-slack-api
+    // if you don't need SlackEngine, remove this line
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile "info.mizoguche:botlin:$botlin_version"
 }
 
 compileKotlin {
@@ -26,4 +33,11 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+task run(type: JavaExec) {
+    classpath = files("build/libs/botlin-template-${version}.jar")
+    classpath += sourceSets.main.runtimeClasspath
+    main = 'botlin.MainKt'
+    dependsOn assemble
 }
