@@ -36,7 +36,7 @@ compileTestKotlin {
 }
 
 task run(type: JavaExec) {
-    classpath = files("build/libs/botlin-template-${version}.jar")
+    classpath = files("build/libs/${rootProject.name}-${version}.jar")
     classpath += sourceSets.main.runtimeClasspath
     main = 'botlin.MainKt'
     dependsOn assemble
