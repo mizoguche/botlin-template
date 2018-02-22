@@ -41,3 +41,13 @@ task run(type: JavaExec) {
     main = 'botlin.MainKt'
     dependsOn assemble
 }
+
+task stage(type: Jar, dependsOn: [clean, jar]) {
+    archiveName = "${rootProject.name}.jar"
+    manifest {
+        attributes 'Main-Class': 'botlin.MainKt'
+    }
+
+    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    from "$buildDir/classes/main"
+}

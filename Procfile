@@ -1,0 +1,1 @@
+app: java -jar build/libs/botlin-template.jar
