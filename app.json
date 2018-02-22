@@ -1,0 +1,11 @@
+{
+  "name": "Botlin template",
+  "description": "A template of Botlin, bot framework made with Kotlin, for Slack",
+  "repository": "https://github.com/mizoguche/botlin-template",
+  "keywords": ["bot", "kotlin", "slack"],
+  "env": {
+    "SLACK_TOKEN": {
+      "description": "The token for your Botlin of Bots application(https://slack.com/apps/A0F7YS25R-bots)."
+    }
+  }
+}
